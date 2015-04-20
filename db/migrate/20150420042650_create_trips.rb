@@ -7,6 +7,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :destination_city
       t.string :origin_country
       t.string :origin_city
+      t.references :user
 
 
       t.timestamps null: false
