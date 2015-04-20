@@ -1,5 +1,6 @@
 <h1>Trips#new</h1>
-<!-- This will probably end up being multiple forms glued together -->
+<!-- This may end up being multiple forms glued together due to Rails conventions -->
+<div class="new-trip-form"></div>
 <%= form_for @trip do |f| %>
 <% if @trip.errors.any? %>
 <div id="error_explanation">
@@ -22,12 +23,15 @@
   <%= f.text_field :destination_city %>
 </p>
 <p>
-
   <!-- drop down starting with months, can choose days or years -->
   <%= f.label :start_date %> <br>
   <%= f.text_field :start_date %>
   <%= f.label :end_date %> <br>
   <%= f.text_field :end_date %>
+  <!-- this is going to be a drop down, see select/options in form for guide -->
+  <!-- <%= f.label duration %> <br> -->
+  <!-- <%= f.text_field duration %> -->
+  <!-- add/swap in duration once figure out how to deal with interval data type -->
 </p>
 <p>
 
@@ -36,6 +40,18 @@
   <%= f.label :origin_city %> <br>
   <%= f.text_field :origin_city %>
 </p>
+
+<!-- Implement these later -->
+<!-- <p>
+  <%= f.label passport %> <br>
+  <%= f.text_field passport %>
+</p>
+
+
+<p>
+  <%= f.label visa %> <br>
+  <%= f.text_field visa %>
+</p> -->
 
 <%= f.submit %>
 </p>

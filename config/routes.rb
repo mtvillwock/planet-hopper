@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'passports/index'
+
+  get 'passports/show'
+
+  get 'passports/new'
+
+  get 'passports/create'
+
+  get 'passports/edit'
+
+  get 'passports/update'
+
+  get 'passports/destroy'
+
   get 'users/index'
 
   get 'users/show'
@@ -62,6 +76,8 @@ Rails.application.routes.draw do
   resources :trips do
   end
   resources :flights do
+  end
+  resources :passports do
   end
   #   resources :products do
   #     member do
