@@ -57,6 +57,12 @@ Rails.application.routes.draw do
   #   resources :products
 
   # Example resource route with options:
+  resources :users do
+  end
+  resources :trips do
+  end
+  resources :flights do
+  end
   #   resources :products do
   #     member do
   #       get 'short'

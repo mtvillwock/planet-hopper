@@ -22,28 +22,21 @@
   <%= f.text_field :destination_city %>
 </p>
 <p>
-  <%= f.label :duration %> <br>
-  <!-- this is going to be a drop down, see select/options in form for guide -->
-  <%= f.text_field :duration %>
+
   <!-- drop down starting with months, can choose days or years -->
-  <%= f.label :start_end %> <br>
-  <%= f.text_field :start_end %>
+  <%= f.label :start_date %> <br>
+  <%= f.text_field :start_date %>
   <%= f.label :end_date %> <br>
   <%= f.text_field :end_date %>
 </p>
 <p>
-  <%= f.label :airport %> <br>
-  <%= f.text_field :airport %>
-  <!-- ^^this OR this -->
+
   <%= f.label :origin_country %> <br>
   <%= f.text_field :origin_country %>
   <%= f.label :origin_city %> <br>
   <%= f.text_field :origin_city %>
 </p>
-<p>
-  <%= f.label :passport %> <br>
-    <%= f.text_field :passport %>
-</p>
+
 <%= f.submit %>
 </p>
 <% end %>
