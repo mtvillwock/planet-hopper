@@ -3,6 +3,7 @@ class CreateTrips < ActiveRecord::Migration
     create_table :trips do |t|
       t.date :start_date
       t.date :end_date
+      # add duration
       t.string :destination_country
       t.string :destination_city
       t.string :origin_country

@@ -1,2 +1,48 @@
 <h1>Trips#new</h1>
-<p>Find me in app/views/trips/new.html.erb</p>
+<%= form_for @trip do |f| %>
+<% if @trip.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@trip.errors.count, "error") %>
+    prohibited this trip from being saved
+  </h2>
+  <ul>
+    <% @trip.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<p>
+  <%= f.label :destination_country %> <br>
+  <%= f.text_field :destination_country %>
+  <%= f.label :destination_city %> <br>
+  <%= f.text_field :destination_city %>
+</p>
+<p>
+  <%= f.label :duration %> <br>
+  <!-- this is going to be a drop down, see select/options in form for guide -->
+  <%= f.text_field :duration %>
+  <!-- drop down starting with months, can choose days or years -->
+  <%= f.label :start_end %> <br>
+  <%= f.text_field :start_end %>
+  <%= f.label :end_date %> <br>
+  <%= f.text_field :end_date %>
+</p>
+<p>
+  <%= f.label :airport %> <br>
+  <%= f.text_field :airport %>
+  <!-- ^^this OR this -->
+  <%= f.label :origin_country %> <br>
+  <%= f.text_field :origin_country %>
+  <%= f.label :origin_city %> <br>
+  <%= f.text_field :origin_city %>
+</p>
+<p>
+  <%= f.label :passport %> <br>
+    <%= f.text_field :passport %>
+</p>
+<%= f.submit %>
+</p>
+<% end %>
