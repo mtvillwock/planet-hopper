@@ -19,6 +19,8 @@
 <p>
   <%= f.label :destination_country %> <br>
   <%= f.text_field :destination_country %>
+</p>
+<p>
   <%= f.label :destination_city %> <br>
   <%= f.text_field :destination_city %>
 </p>
@@ -26,33 +28,36 @@
   <!-- drop down starting with months, can choose days or years -->
   <%= f.label :start_date %> <br>
   <%= f.text_field :start_date %>
+</p>
+<p>
   <%= f.label :end_date %> <br>
   <%= f.text_field :end_date %>
   <!-- this is going to be a drop down, see select/options in form for guide -->
-  <!-- <%= f.label duration %> <br> -->
-  <!-- <%= f.text_field duration %> -->
+  <!-- f.label duration -->
+  <!-- f.text_field duration -->
   <!-- add/swap in duration once figure out how to deal with interval data type -->
 </p>
 <p>
-
   <%= f.label :origin_country %> <br>
   <%= f.text_field :origin_country %>
+</p>
+<p>
   <%= f.label :origin_city %> <br>
   <%= f.text_field :origin_city %>
 </p>
 
 <!-- Implement these later -->
 <!-- <p>
-  <%= f.label passport %> <br>
-  <%= f.text_field passport %>
+   f.label passport  <br>
+   f.text_field passport
 </p>
 
 
 <p>
-  <%= f.label visa %> <br>
-  <%= f.text_field visa %>
-</p> -->
+   f.label visa <br>
+   f.text_field visa
+ </p> -->
 
-<%= f.submit %>
+ <%= f.submit %>
 </p>
 <% end %>
