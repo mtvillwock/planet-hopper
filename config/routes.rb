@@ -1,66 +1,15 @@
 Rails.application.routes.draw do
-  get 'passports/index'
 
-  get 'passports/show'
-
-  get 'passports/new'
-
-  get 'passports/create'
-
-  get 'passports/edit'
-
-  get 'passports/update'
-
-  get 'passports/destroy'
-
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
-  get 'trips/index'
-
-  get 'trips/show'
-
-  get 'trips/new'
-
-  get 'trips/create'
-
-  get 'trips/edit'
-
-  get 'trips/update'
-
-  get 'trips/destroy'
-
-  get 'flights/index'
-
-  get 'flights/show'
-
-  get 'flights/new'
-
-  get 'flights/create'
-
-  get 'flights/edit'
-
-  get 'flights/update'
-
-  get 'flights/destroy'
+  # get 'register' # User create
+  # get 'login' # Session create?
+  # get 'logout' # Session destroy?
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # real root
-  # root 'users#index'
+  root 'users#index'
   # default root
   # root 'welcome#index'
 
