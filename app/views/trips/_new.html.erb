@@ -1,0 +1,68 @@
+<!-- This may end up being multiple forms glued together due to Rails conventions -->
+<div class="new-trip-form">
+  <!-- Would this form be better done using JS and jQuery UI? -->
+  <%= form_for @trip do |f| %>
+  <% if @trip.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@trip.errors.count, "error") %>
+      prohibited this trip from being saved
+    </h2>
+    <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <!-- <p> -->
+  <!-- f.label :destination_country  <br> -->
+  <!-- f.text_field :destination_country  -->
+  <!-- </p> -->
+  <p>
+   <%= f.label "I'm going to" %>
+   <%= f.text_field :destination_city %>
+ </p>
+ <!-- <p> -->
+ <!-- drop down starting with months, can choose days or years -->
+ <!-- f.label :start_date <br> -->
+ <!-- f.text_field :start_date -->
+ <!-- </p> -->
+ <!-- <p> -->
+ <!-- f.label :end_date <br> -->
+ <!-- f.text_field :end_date -->
+ <!-- this is going to be a drop down, see select/options in form for guide -->
+ <p>
+  <%= f.label "for " %>
+  <%= f.text_field :duration %>
+  <%= f.label "months/days/years" %>
+  <!-- add/swap in duration once figure out how to deal with interval data type -->
+</p>
+
+<p>
+  <%= f.label "Departing from" %>
+  <%= f.text_field :origin_city %>
+</p>
+
+<p>
+  <%= f.label 'With a passport from' %>
+  <%= f.text_field :origin_country %>
+</p>
+
+<!-- Implement these later -->
+  <!-- <p>
+     f.label passport  <br>
+     f.text_field passport
+  </p>
+
+
+  <p>
+     f.label visa <br>
+     f.text_field visa
+   </p> -->
+
+   <%= f.submit %>
+ </p>
+ <% end %>
+</div>
