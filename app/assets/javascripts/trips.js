@@ -1,4 +1,6 @@
-$(document).ready(bindEvents);
+$(document).ready(function() {
+  bindEvents();
+});
 
 function bindEvents() {
   addTestTripListener();
