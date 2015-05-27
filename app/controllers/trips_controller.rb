@@ -9,7 +9,10 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
+#    @trip = Trip.new
+# don't have to use @trip here because the index page is already providing it for the partial form that is rendered
+    render partial: "trip_info",
+    locals: { foo: "test var"}
   end
 
   def create
@@ -37,10 +40,5 @@ class TripsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def test
-    render partial: "trip-info",
-locals: { foo: "test var"}
   end
 end
