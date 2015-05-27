@@ -5,5 +5,5 @@ function bindEvents() {
 }
 
 function addTestTripListener() {
-
+  $()
 }
