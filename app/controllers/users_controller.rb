@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @trip = Trip.new
+    @user = User.new
   end
 
   def show

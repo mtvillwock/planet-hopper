@@ -1,8 +1,11 @@
 class TripsController < ApplicationController
   def index
+    @trip = Trip.new
   end
 
   def show
+    # need error handling here
+    @trip = Trip.find(params[:id])
   end
 
   def new
@@ -34,5 +37,10 @@ class TripsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def test
+    render partial: "trip-info",
+locals: { foo: "test var"}
   end
 end

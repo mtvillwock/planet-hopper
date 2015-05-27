@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   resources :users do
   end
   resources :trips do
+    member do
+      post 'test'
+    end
   end
   resources :flights do
   end

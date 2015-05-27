@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<h1><%= link_to users_path do %>
+Planet Hopper
+<% end %></h1>
 <div class="container">
 <%= yield %>
 </div>
