@@ -5,10 +5,12 @@ function bindEvents() {
 }
 
 function addTestTripListener() {
-  $('.container').on('click', '.test', handleTestClick);
+  $('.container').on('click', 'a .test', handleTestClick);
+  console.log("listener added");
 }
 
 function handleTestClick() {
+  console.log("here");
   event.preventDefault();
 
   debugger;
