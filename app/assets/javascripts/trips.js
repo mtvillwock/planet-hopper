@@ -1,6 +1,3 @@
-$(document).ready(function() {
-  bindEvents();
-});
 
 function bindEvents() {
   addTestTripListener();
@@ -21,3 +18,11 @@ function handleTestClick() {
     // type: 'post'
   // }).done(function(serverData){ $('.container').append(serverData)})
 }
+
+
+$(document).ready(function() {
+  console.log("in document ready")
+  bindEvents();
+});
+
+$(document).on("page:load", bindEvents);
