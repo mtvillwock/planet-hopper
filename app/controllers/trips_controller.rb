@@ -21,6 +21,12 @@ class TripsController < ApplicationController
     locals: { foo: "test var"}, layout: false
   end
 
+  def get_cities
+    # fetch all cities and compare possible matches to input from AJAX call
+    # return list of cities that match based on compariing N letters
+    # received from AJAX call with N letters of each city in cities collection
+  end
+
   def create
     @trip = Trip.new(
       destination_country: params[:trip][:destination_country],

@@ -1,7 +1,16 @@
 
 function bindEvents() {
   addTestTripListener();
-  console.log("events bound")
+  $('#trip_destination_city').on('keyup', populateCitiesForm);
+  console.log("events bound");
+}
+
+function populateCitiesForm() {
+  // event.preventDefault();
+  console.log("here")
+  debugger;
+  // AJAX call sending letters from city field
+  // done function appending possible cities based on server response
 }
 
 function addTestTripListener() {
