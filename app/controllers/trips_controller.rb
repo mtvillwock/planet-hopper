@@ -25,6 +25,15 @@ class TripsController < ApplicationController
     # fetch all cities and compare possible matches to input from AJAX call
     # return list of cities that match based on compariing N letters
     # received from AJAX call with N letters of each city in cities collection
+    # This makes me think that a cities model/migration would be useful but for
+    # now I am spoofing it with a sample array
+    city_options = []
+    possible_cities = ["London", "Tokyo", "San Francisco", "New York", "Madison", "Milwaukee", "Boston", "Los Angeles", "Toronto"]
+    p params
+    possible_cities.each |city| do
+      city_options << city if city[0..params[:city_input] - 1] == params[:city_input]
+    end
+    render json: { city_options: city_options }
   end
 
   def create
