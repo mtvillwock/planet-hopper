@@ -5,10 +5,11 @@ function bindEvents() {
   console.log("events bound");
 }
 
-function populateCitiesForm() {
-  event.preventDefault();
-  console.log("here")
-  debugger;
+function populateCitiesForm(event) {
+  console.log("event is: ", event);
+  // event.preventDefault();
+  var input = $('#trip_destination_city').val()
+  debugger
   // AJAX call sending letters from city field
   // done function appending possible cities based on server response
 }
