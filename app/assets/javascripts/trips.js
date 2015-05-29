@@ -8,8 +8,20 @@ function bindEvents() {
 function populateCitiesForm(event) {
   console.log("event is: ", event);
   // event.preventDefault();
-  var input = $('#trip_destination_city').val()
+  var cityInput = $('#trip_destination_city').val()
   debugger
+  $.ajax({
+    url: '/trips/1/get_cities',
+    type: 'get',
+    data: { city_input: cityInput }
+  })
+
+  .done(function(response){
+    console.log("done: ", response);
+  })
+  .fail(function(response){
+    console.log("fail: ", response)
+  })
   // AJAX call sending letters from city field
   // done function appending possible cities based on server response
 }
