@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     city_options = []
     possible_cities = ["London", "Tokyo", "San Francisco", "New York", "Madison", "Milwaukee", "Boston", "Los Angeles", "Toronto"]
     p params
-    possible_cities.each |city| do
+    possible_cities.each do |city|
       city_options << city if city[0..params[:city_input] - 1] == params[:city_input]
     end
     render json: { city_options: city_options }

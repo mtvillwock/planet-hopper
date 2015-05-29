@@ -6,7 +6,7 @@ function bindEvents() {
 }
 
 function populateCitiesForm() {
-  // event.preventDefault();
+  event.preventDefault();
   console.log("here")
   debugger;
   // AJAX call sending letters from city field
