@@ -9,16 +9,7 @@ class TripsController < ApplicationController
   end
 
   def new
-#    @trip = Trip.new
-# don't have to use @trip here because the index page is already providing it for the partial form that is rendered
-# respond_to do |format|
-
-#   format.html # show.html.erb
-#   format.json { render json: @user }
-
-#  end
-    render partial: "trip_info",
-    locals: { foo: "test var"}, layout: false
+    @trip = Trip.new
   end
 
   def get_cities
