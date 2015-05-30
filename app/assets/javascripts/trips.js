@@ -9,9 +9,9 @@ function populateCitiesForm(event) {
   console.log("event is: ", event);
   // event.preventDefault();
   var cityInput = $('#trip_destination_city').val()
-  debugger
+
   $.ajax({
-    url: '/trips/1/get_cities',
+    url: '/trips/get_cities',
     type: 'get',
     data: { city_input: cityInput }
   })

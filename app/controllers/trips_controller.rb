@@ -19,11 +19,18 @@ class TripsController < ApplicationController
     # This makes me think that a cities model/migration would be useful but for
     # now I am spoofing it with a sample array
     city_options = []
-    possible_cities = ["London", "Tokyo", "San Francisco", "New York", "Madison", "Milwaukee", "Boston", "Los Angeles", "Toronto"]
-    p params
+    possible_cities = ["London", "Tokyo", "San Francisco", "New York", "Madison", "Milwaukee", "Boston", "Los Angeles", "Toronto", "San Diego", "Santa Clara", "Green Bay"]
+    p "form input is: "
+    p params[:city_input]
     possible_cities.each do |city|
-      city_options << city if city[0..params[:city_input] - 1] == params[:city_input]
+      p "city is: "
+      p city
+      p "portion of option city minus input: "
+      p city[0..params[:city_input].length - 1]
+      city_options << city if city[0..params[:city_input].length - 1].downcase == params[:city_input].downcase
     end
+    p "the options are: "
+    p city_options
     render json: { city_options: city_options }
   end
 
