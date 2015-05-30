@@ -1,7 +1,3 @@
-<!-- using trips/new here feels like I'm trying to cheat the Rails conventions -->
-<a class="test" href="/trips/new">
-<button >Test</button>
-</a>
 <!-- This may end up being multiple forms glued together due to Rails conventions -->
 <div class="new-trip-form">
   <!-- Would this form be better done using JS and jQuery UI? -->
@@ -28,25 +24,26 @@
    <%= f.label "I'm going to" %>
    <%= f.text_field :destination_city, list: "cities" %>
  </p>
- <!-- <p> -->
  <!-- drop down starting with months, can choose days or years -->
- <!-- f.label :start_date <br> -->
- <!-- f.text_field :start_date -->
- <!-- </p> -->
- <!-- <p> -->
- <!-- f.label :end_date <br> -->
- <!-- f.text_field :end_date -->
- <!-- this is going to be a drop down, see select/options in form for guide -->
  <p>
-  <%= f.label "for " %>
-  <%= f.text_field :duration %>
-  <%= f.label "months/days/years" %>
+   <%= f.label :start_date %>
+   <%= date_select :trip, :start_date %>
+ </p>
+ <p>
+   <%= f.label :end_date %>
+   <%= date_select :trip, :end_date %>
+ </p>
+ <!-- this is going to be a drop down, see select/options in form for guide -->
+ <!-- <p> -->
+   <!-- f.label "for "  -->
+   <!-- f.text_field :duration  -->
+   <!-- f.label "months/days/years"  -->
   <!-- add/swap in duration once figure out how to deal with interval data type -->
-</p>
+<!-- </p> -->
 
 <p>
   <%= f.label "Departing from" %>
-  <%= f.text_field :origin_city %>
+  <%= f.text_field :origin_city, list: "airport-cities" %>
 </p>
 
 <p>

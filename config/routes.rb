@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   match 'trips/get_cities' => 'trips#get_cities', :via => :get
+  match 'trips/departure_airports' => 'trips#departure_airports', :via => :get
   # get 'register' # User create
   # get 'login' # Session create?
   # get 'logout' # Session destroy?
