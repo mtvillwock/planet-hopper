@@ -1,0 +1,25 @@
+<h1>Flights#new</h1>
+<%= form_for @flight do |f| %>
+<% if @flight.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@flight.errors.count, "error") %>
+    prohibited this flight from being saved
+  </h2>
+  <ul>
+    <% @flight.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<p>
+<%= f.label :airport %> <br>
+<%= f.text_field :airport %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
