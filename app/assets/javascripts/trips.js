@@ -23,7 +23,7 @@ function populateCitiesForm(event) {
     $('#trip_destination_city').append("<datalist id='cities'></datalist>");
     for (var i = 0; i < cities.length; i++) {
       console.log(cities[i]);
-      $('#cities').append("<option value='" + cities[i] + "'>");
+      $('#cities').append("<option value='" + cities[i] + "'>" + cities[i]);
     };
   })
   .fail(function(response){
