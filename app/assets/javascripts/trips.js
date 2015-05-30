@@ -17,7 +17,14 @@ function populateCitiesForm(event) {
   })
 
   .done(function(response){
-    console.log("done: ", response);
+    var cities = response.city_options;
+    console.log("city strings are: ", cities);
+    $('#trip_destination_city').empty();
+    $('#trip_destination_city').append("<datalist id='cities'></datalist>");
+    for (var i = 0; i < cities.length; i++) {
+      console.log(cities[i]);
+      $('#cities').append("<option value='" + cities[i] + "'>");
+    };
   })
   .fail(function(response){
     console.log("fail: ", response)
