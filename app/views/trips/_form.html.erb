@@ -15,18 +15,16 @@
     </ul>
   </div>
   <% end %>
-  <p>
+  <p class="trip-destination">
    <%= f.label "I'm going to" %>
    <%= f.text_field :destination_city, list: "cities", placeholder: 'destination city' %>
     <%= f.text_field :destination_country, placeholder: "destination country" %>
  </p>
  <!-- drop down starting with months, can choose days or years -->
- <p>
-   <%= f.label :start_date %>
+ <p class="trip-duration">
+   <%= f.label "from"  %>
    <%= date_select :trip, :start_date %>
- </p>
- <p>
-   <%= f.label :end_date %>
+   <%= f.label "until"  %>
    <%= date_select :trip, :end_date %>
  </p>
  <!-- this is going to be a drop down, see select/options in form for guide -->
@@ -37,20 +35,19 @@
  <!-- add/swap in duration once figure out how to deal with interval data type -->
  <!-- </p> -->
 
- <p>
+ <p class="trip-airport">
   <%= f.label "Departing from" %>
   <%= f.text_field :origin_city, list: "airport-cities", placeholder: "Airport" %>
 </p>
 
-<p>
+<p class="trip-passport">
   <%= f.label 'With a passport from' %>
   <%= f.text_field :origin_country, placeholder: "origin country" %>
 </p>
 
 <!-- Implement these later -->
   <!-- <p>
-     f.label passport  <br>
-     f.text_field passport
+     f.text_field passport, placeholder: "passport from country"
   </p>
 
 
