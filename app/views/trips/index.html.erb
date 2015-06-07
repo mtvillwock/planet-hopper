@@ -13,5 +13,8 @@
     <% end %>
     <% end %>
   </div>
-  <%= button_to 'Make a new trip', new_trip_path %>
+
+  <%= link_to new_trip_path do %>
+    <button>Make a new trip</button>
+  <% end %>
 </div>

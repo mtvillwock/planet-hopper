@@ -57,6 +57,8 @@ class TripsController < ApplicationController
     # maybe a hash with city name as a string and city object as a value
     p "form input is: "
     p params[:city_input]
+    # Switch this in JS and here to destination_city
+    # Make params match up with form input names
     possible_cities.each do |city|
       p "city is: "
       p city
@@ -77,6 +79,8 @@ class TripsController < ApplicationController
     # maybe a hash with city name as a string and city object as a value
     p "form input is: "
     p params[:airport_input]
+    # Switch this in JS and here
+    # Make params match up with form input names
     possible_airports.each do |airport|
       p "airport is: "
       p airport
@@ -89,6 +93,50 @@ class TripsController < ApplicationController
     render json: { airport_options: airport_options }
   end
 
+  def timespans
+    timespan_options = []
+    possible_timespans = ["days", "weeks", "months", "years"]
+      timespan_options = possible_timespans
+    p timespan_options
+    render json: { timespan_options: timespan_options }
+  end
+
+  def destination_countries
+    country_options = []
+    possible_countries = ["United States", "United Kingdom", "Canada", "Ireland", "China", "New Zealand", "Australia", "Japan"]
+    # maybe a hash with country name as a string and country object as a value
+    p "form input is: "
+    p params[:destination_country]
+    possible_countries.each do |country|
+      p "country is: "
+      p country
+      p "portion of option country minus input: "
+      p country[0..params[:destination_country].length - 1]
+      country_options << country if country[0..params[:destination_country].length - 1].downcase == params[:destination_country].downcase
+    end
+    p "the options are: "
+    p country_options
+    render json: { country_options: country_options }
+  end
+
+  def origin_countries
+    country_options = []
+    possible_countries = ["United States", "United Kingdom", "Canada", "Ireland", "China", "New Zealand", "Australia", "Japan"]
+    # maybe a hash with country name as a string and country object as a value
+    p "form input is: "
+    p params[:origin_country]
+    possible_countries.each do |country|
+      p "country is: "
+      p country
+      p "portion of option country minus input: "
+      p country[0..params[:origin_country].length - 1]
+      country_options << country if country[0..params[:origin_country].length - 1].downcase == params[:origin_country].downcase
+    end
+    p "the options are: "
+    p country_options
+    render json: { country_options: country_options }
+  end
+
   private
   def trip_params
     params.require(:trip).permit(
@@ -97,6 +145,6 @@ class TripsController < ApplicationController
       :destination_city,
       :destination_country,
       :origin_city,
-      :origin_country)
+    :origin_country)
   end
 end
