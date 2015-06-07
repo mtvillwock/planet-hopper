@@ -1,2 +1,11 @@
-<h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+<div class="col-xs-5">
+  <h2><%= @trip.origin_city %>, <%= @trip.origin_country %> to <%= @trip.destination_city %>, <%= @trip.destination_country %></h2>
+  <p>Leaving: <%= @trip.start_date %></p>
+  <p>Returning: <%= @trip.end_date %></p>
+  <p>From: <%= @trip.origin_city %>, <%= @trip.origin_country %></p>
+  <p>To: <%= @trip.destination_city %>, <%= @trip.destination_country %></p>
+
+  <%= render partial: 'trip_links', locals: { trip: @trip } %>
+</div>
+
+<%= render partial: 'trip_info', locals: { trip: @trip } %>

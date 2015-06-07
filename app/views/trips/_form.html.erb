@@ -1,5 +1,5 @@
 <!-- This may end up being multiple forms glued together due to Rails conventions -->
-<div class="new-trip-form">
+<div class="trip-form-container">
   <!-- Would this form be better done using JS and jQuery UI? -->
   <%= form_for @trip do |f| %>
   <% if @trip.errors.any? %>
@@ -15,14 +15,10 @@
     </ul>
   </div>
   <% end %>
-
-  <!-- <p> -->
-  <!-- f.label :destination_country  <br> -->
-  <!-- f.text_field :destination_country  -->
-  <!-- </p> -->
   <p>
    <%= f.label "I'm going to" %>
-   <%= f.text_field :destination_city, list: "cities" %>
+   <%= f.text_field :destination_city, list: "cities", placeholder: 'destination city' %>
+    <%= f.text_field :destination_country, placeholder: "destination country" %>
  </p>
  <!-- drop down starting with months, can choose days or years -->
  <p>
@@ -35,20 +31,20 @@
  </p>
  <!-- this is going to be a drop down, see select/options in form for guide -->
  <!-- <p> -->
-   <!-- f.label "for "  -->
-   <!-- f.text_field :duration  -->
-   <!-- f.label "months/days/years"  -->
-  <!-- add/swap in duration once figure out how to deal with interval data type -->
-<!-- </p> -->
+ <!-- f.label "for "  -->
+ <!-- f.text_field :duration  -->
+ <!-- f.label "months/days/years"  -->
+ <!-- add/swap in duration once figure out how to deal with interval data type -->
+ <!-- </p> -->
 
-<p>
+ <p>
   <%= f.label "Departing from" %>
-  <%= f.text_field :origin_city, list: "airport-cities" %>
+  <%= f.text_field :origin_city, list: "airport-cities", placeholder: "Airport" %>
 </p>
 
 <p>
   <%= f.label 'With a passport from' %>
-  <%= f.text_field :origin_country %>
+  <%= f.text_field :origin_country, placeholder: "origin country" %>
 </p>
 
 <!-- Implement these later -->
@@ -67,3 +63,5 @@
  </p>
  <% end %>
 </div>
+
+<%= render partial: 'trip_info', locals: { trip: @trip } %>
