@@ -1,3 +1,6 @@
+<%= link_to new_trip_path do %>
+    <button>Make a new trip</button>
+  <% end %>
 <div class="col-xs-5">
   <h2><%= @trip.origin_city %>, <%= @trip.origin_country %> to <%= @trip.destination_city %>, <%= @trip.destination_country %></h2>
   <p>Leaving: <%= @trip.start_date %></p>
