@@ -24,17 +24,10 @@ Rails.application.routes.draw do
   #   resources :products
 
   # Example resource route with options:
-  resources :users do
-  end
-  resources :trips do
-    member do
-      post 'test'
-    end
-  end
-  resources :flights do
-  end
-  resources :passports do
-  end
+  resources :users
+  resources :trips
+  resources :flights
+  resources :passports
   #   resources :products do
   #     member do
   #       get 'short'

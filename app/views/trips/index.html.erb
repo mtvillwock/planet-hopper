@@ -1,5 +1,16 @@
 <div class="col-xs-5">
   <h2>Enter Trip Details</h2>
+  <div class="trips-container">
+    <% if @trips %>
+    <% @trips.each do |trip| %>
+      <li>
+        <%= link_to trip do %>
+        trip.origin_city to trip.destination_city
+        <%end%></li>
+      <%= render partial: 'trip_links', locals: { trip: trip } %>
+    <% end %>
+    <% end %>
+  </div>
   <%= render 'new' %>
 </div>
 <div class="trip-info col-xs-4 pull-right" style="display: none">

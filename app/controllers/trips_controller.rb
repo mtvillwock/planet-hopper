@@ -1,5 +1,7 @@
 class TripsController < ApplicationController
   def index
+    # current_user.trips.all
+    @trips = Trip.all
     @trip = Trip.new
   end
 
@@ -14,30 +16,29 @@ class TripsController < ApplicationController
 
 
   def create
-    @trip = Trip.new(
-      destination_country: params[:trip][:destination_country],
-      destination_city: params[:trip][:destination_city],
-      start_date: params[:trip][:start_date],
-      end_date: params[:trip][:end_date],
-      origin_country: params[:trip][:origin_country],
-      origin_city: params[:trip][:origin_city])
-    # Revise based on link below:
-    # http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
-    # @trip = Trip.new(params[:trip])
+    @trip = Trip.new(trip_params)
     if @trip.save
-      render json: { success: "trip created" }
+      redirect_to @trip
     else
-      render json: { error: "trip failed to create" }
+      render 'new'
     end
   end
 
   def edit
+    @trip = Trip.find(params[:id])
   end
 
   def update
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      redirect_to @trip
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @trip = Trip.find(params[:id])
   end
 
   def get_cities
@@ -81,5 +82,16 @@ class TripsController < ApplicationController
     p "the options are: "
     p airport_options
     render json: { airport_options: airport_options }
+  end
+
+  private
+  def trip_params
+    params.require(:trip).permit(
+      :start_date,
+      :end_date,
+      :destination_city,
+      :destination_country,
+      :origin_city,
+      :origin_country)
   end
 end
