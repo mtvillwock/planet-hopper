@@ -89,6 +89,27 @@ class TripsController < ApplicationController
     render json: { airport_options: airport_options }
   end
 
+  def timespans
+    timespan_options = []
+    possible_timespans = ["days", "weeks", "months", "years"]
+    # p "form input is: "
+    # p params[:timespan]
+    # if params[:timespan] == ""
+      timespan_options = possible_timespans
+    # else
+    #   possible_timespans.each do |timespan|
+    #     p "timespan is: "
+    #     p timespan
+    #     p "portion of timespan option minus input: "
+    #     p timespan[0..params[:timespan].length - 1]
+    #     timespan_options << timespan if timespan[0..params[:timespan].length - 1].downcase == params[:timespan].downcase
+    #   end
+    # end
+    # p "the options are: "
+    p timespan_options
+    render json: { timespan_options: timespan_options }
+  end
+
   private
   def trip_params
     params.require(:trip).permit(
@@ -97,6 +118,6 @@ class TripsController < ApplicationController
       :destination_city,
       :destination_country,
       :origin_city,
-      :origin_country)
+    :origin_country)
   end
 end
