@@ -18,7 +18,7 @@
   <p class="trip-destination">
    <%= f.label "I'm going to" %>
    <%= f.text_field :destination_city, list: "cities", placeholder: 'destination city' %>
-    <%= f.text_field :destination_country, placeholder: "destination country" %>
+    <%= f.text_field :destination_country, placeholder: "destination country", list: "destination_countries" %>
  </p>
  <!-- drop down starting with months, can choose days or years -->
  <p class="trip-duration" style="display: none">
@@ -40,7 +40,7 @@
 
 <p class="trip-passport" style="display: none">
   <%= f.label 'With a passport from' %>
-  <%= f.text_field :origin_country, placeholder: "origin country" %>
+  <%= f.text_field :origin_country, placeholder: "origin country", placeholder: "origin country", list: "origin_countries" %>
 </p>
 
 <!-- Implement these later -->

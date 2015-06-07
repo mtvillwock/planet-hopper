@@ -79,8 +79,6 @@ function populateDeparturesField(e) {
         .fail(function(response) {
             console.log("fail: ", response);
         })
-    // AJAX call sending letters from airport
-    // done function appending possible cities based on server response
 }
 
 function populateTimespanField(e) {
@@ -109,12 +107,62 @@ function populateTimespanField(e) {
         .fail(function(response) {
             console.log("fail: ", response);
         })
-    // AJAX call sending letters from airport
-    // done function appending possible cities based on server response
 }
 
-function populateDestinationCountryField(){}
-function populateOriginCountryField(){}
+function populateDestinationCountryField(e){
+  console.log("e is: ", e);
+    // e.preventDefault();
+    var input = document.getElementById('trip_destination_country').value;
+
+    $.ajax({
+        url: '/trips/destination_countries',
+        type: 'get',
+        data: {
+            destination_country: input
+        }
+    })
+
+    .done(function(response) {
+        var destination_countries = response.country_options;
+        console.log("response is: ", destination_countries);
+        $('#trip_destination_country').empty();
+        $('#trip_destination_country').append("<datalist id='destination_countries'></datalist>");
+        for (var i = 0; i < destination_countries.length; i++) {
+            console.log(destination_countries[i]);
+            $('#destination_countries').append("<option value='" + destination_countries[i] + "'>" + destination_countries[i]);
+        };
+    })
+        .fail(function(response) {
+            console.log("fail: ", response);
+        })
+}
+function populateOriginCountryField(e){
+  console.log("e is: ", e);
+    // e.preventDefault();
+    var input = document.getElementById('trip_origin_country').value;
+
+    $.ajax({
+        url: '/trips/origin_countries',
+        type: 'get',
+        data: {
+            origin_country: input
+        }
+    })
+
+    .done(function(response) {
+        var origin_countries = response.country_options;
+        console.log("response is: ", origin_countries);
+        $('#trip_origin_country').empty();
+        $('#trip_origin_country').append("<datalist id='origin_countries'></datalist>");
+        for (var i = 0; i < origin_countries.length; i++) {
+            console.log(origin_countries[i]);
+            $('#origin_countries').append("<option value='" + origin_countries[i] + "'>" + origin_countries[i]);
+        };
+    })
+        .fail(function(response) {
+            console.log("fail: ", response);
+        })
+}
 
 
 
