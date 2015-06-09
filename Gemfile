@@ -35,6 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'better_errors'
+gem 'binding_of_caller'
 
 group :test do
   gem "faker", "~> 1.4.3"
