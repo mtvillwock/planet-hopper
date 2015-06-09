@@ -1,0 +1,7 @@
+<div class="login">
+   <%= form_for(@user) do |f| %>
+   <p><%= f.text_field :email, placeholder: "bob@bobloblaw.com" %></p>
+   <p><%= f.text_field :phone_number, placeholder: "555-867-5309" %></p>
+   <p><%= f.password_hash %></p>
+   <% end %>
+</div>
