@@ -5,7 +5,8 @@ In progress.
 ## MVP
 
 - ~~form revealing fields as it goes~~
-- show suggestions after form is filled out
+- ~~basic user auth~~
+- show travel suggestions after form is filled out
 
 
 ## Contribution
