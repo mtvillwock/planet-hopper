@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'dotenv-rails'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -35,6 +35,8 @@ gem 'dotenv-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'better_errors'
+gem 'binding_of_caller'
 
 group :test do
   gem "faker", "~> 1.4.3"

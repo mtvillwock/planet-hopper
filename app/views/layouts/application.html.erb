@@ -7,12 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1><%= link_to users_path do %>
-Planet Hopper
-<% end %></h1>
-<div class="container">
-<%= yield %>
-</div>
+  <%= link_to users_path do %>
+  <h1>Planet Hopper</h1>
+  <% end %>
+
+  <nav class="login">
+    <% if current_user %>
+    Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
+    <% else %>
+    <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+    <% end %>
+  </nav>
+
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

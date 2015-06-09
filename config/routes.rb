@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
+  # AJAX
   match 'trips/get_cities' => 'trips#get_cities', :via => :get
   match 'trips/departure_airports' => 'trips#departure_airports', :via => :get
   match 'trips/timespans' => 'trips#timespans', :via => :get
   match 'trips/destination_countries' => 'trips#destination_countries', :via => :get
-    match 'trips/origin_countries' => 'trips#origin_countries', :via => :get
-  # get 'register' # User create
-  # get 'login' # Session create?
-  # get 'logout' # Session destroy?
+  match 'trips/origin_countries' => 'trips#origin_countries', :via => :get
+
+  ## Auth
+  get '/signup' => 'users#new'
+  # put this all in users instead of having sessions
+  # controller since sessions is not a resource?
+  # can just have login/logout as user actions
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

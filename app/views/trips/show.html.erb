@@ -3,6 +3,7 @@
   <% end %>
 <div class="col-xs-5">
   <h2><%= @trip.origin_city %>, <%= @trip.origin_country %> to <%= @trip.destination_city %>, <%= @trip.destination_country %></h2>
+  <p>For <%= @trip.duration %> <%= @trip.timespan %></p>
   <p>Leaving: <%= @trip.start_date %></p>
   <p>Returning: <%= @trip.end_date %></p>
   <p>From: <%= @trip.origin_city %>, <%= @trip.origin_country %></p>

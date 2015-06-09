@@ -1,2 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="register">
+  <div class="form-errors">
+    <h2>The following errors prevented your form submission:</h2>
+    <% if !@user.errors.empty? %>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+    <% end %>
+    <% end %>
+  </div>
+  <%= form_for(@user) do |f| %>
+  <p>Email: <%= f.text_field :email, placeholder: "bob@bobloblaw.com" %></p>
+  <p>Password: <%= f.password_field :password %></p>
+  <p><%= f.submit "Sign Up!" %></p>
+  <% end %>
+</div>
