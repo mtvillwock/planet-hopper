@@ -42,4 +42,8 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to '/'
   end
+
+  def user_params
+    params.require(:user).permit(:email, :password_hash)
+  end
 end
