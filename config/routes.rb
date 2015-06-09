@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   match 'trips/origin_countries' => 'trips#origin_countries', :via => :get
 
   ## Auth
-  match '/register' => 'users#create', :via => :post
+  get '/signup' => 'users#new'
   # put this all in users instead of having sessions
   # controller since sessions is not a resource?
   # can just have login/logout as user actions
-  match '/login' => 'sessions#create', :via => :post
-  match '/logout' => 'sessions#destroy', :via => :delete
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

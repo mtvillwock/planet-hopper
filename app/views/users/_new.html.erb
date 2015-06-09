@@ -1,6 +1,15 @@
 <div class="register">
+  <div class="form-errors">
+    <h2>The following errors prevented your form submission:</h2>
+    <% if !@user.errors.empty? %>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+    <% end %>
+    <% end %>
+  </div>
    <%= form_for(@user) do |f| %>
-   <p><%= f.text_field :email, placeholder: "bob@bobloblaw.com" %></p>
-   <p><%= f.password_hash %></p>
+   <p>Email: <%= f.text_field :email, placeholder: "bob@bobloblaw.com" %></p>
+   <p>Password: <%= f.password_field :password %></p>
+   <p><%= f.submit "Sign Up!" %></p>
    <% end %>
 </div>

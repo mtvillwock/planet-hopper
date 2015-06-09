@@ -1,6 +1,7 @@
 <div class="login">
-   <%= form_for(@user) do |f| %>
-   <p><%= f.text_field :email, placeholder: "bob@bobloblaw.com" %></p>
-   <p><%= f.password_hash %></p>
-   <% end %>
+ <%= form_tag '/login' do %>
+ Email: <%= text_field_tag :email %>
+ Password: <%= password_field_tag :password %>
+ <%= submit_tag "Login" %>
+ <% end %>
 </div>

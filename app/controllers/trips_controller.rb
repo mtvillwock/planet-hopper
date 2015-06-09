@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_filter :authorize
+
   def index
     # current_user.trips.all
     @trips = Trip.all

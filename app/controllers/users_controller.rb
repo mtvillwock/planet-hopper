@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    # @user = User.find(params[:username])
+    @user = User.find_by(id: session[:user_id])
   end
 
   def new
@@ -14,21 +13,20 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
-      redirect_to '/login'
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     else
       render 'new'
     end
   end
 
   def edit
-    @user = User.find(params[:id])
-    # @user = User.find(params[:username])
+    @user = User.find_by(id: session[:user_id])
   end
 
   def update
-    @user = User.find(params[:id])
-    # @user = User.find(params[:username])
+    @user = User.find_by(id: session[:user_id])
     if @user.update(user_params)
       redirect_to 'show'
     else
@@ -37,13 +35,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    # @user = User.find(params[:username])
+    @user = User.find_by(id: session[:user_id])
     @user.destroy
     redirect_to '/'
   end
 
   def user_params
-    params.require(:user).permit(:email, :password_hash)
+    params.require(:user).permit(:email, :password)
   end
 end
