@@ -2,8 +2,7 @@ class TripsController < ApplicationController
   before_filter :authorize
 
   def index
-    # current_user.trips.all
-    @trips = Trip.all
+    @trips = current_user.trips.all
     @trip = Trip.new
   end
 
@@ -144,6 +143,8 @@ class TripsController < ApplicationController
     params.require(:trip).permit(
       :start_date,
       :end_date,
+      :duration,
+      :timespan,
       :destination_city,
       :destination_country,
       :origin_city,
