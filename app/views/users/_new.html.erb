@@ -1,14 +1,10 @@
 <%= form_for(@user) do |f| %>
-   <p><%= f.label :first_name %></p>
-   <p><%= f.text_field :first_name %></p>
-   <p><%= f.label :last_name %></p>
-   <p><%= f.text_field :last_name %></p>
+   <p><%= f.text_field :first_name, placeholder: "Harvey" %></p>
+   <p><%= f.text_field :last_name, placeholder: "Dent" %></p>
    <!-- Should this be username? -->
    <!-- Balance between having less info to fill out and getting more info from users -->
    <!-- I feel like right now it is not necessary to get their name -->
-   <p><%= f.label :email %></p>
-   <p><%= f.text_field :email %></p>
-   <p><%= f.label :phone_number %></p>
-   <p><%= f.text_field :phone_number %></p>
-   <p>Password???</p>
+   <p><%= f.text_field :email, placeholder: "bob@bobloblaw.com" %></p>
+   <p><%= f.text_field :phone_number, placeholder: "555-867-5309" %></p>
+   <p><%= f.password %></p>
 <% end %>
