@@ -1,2 +1,16 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h3>Edit User</h3>
+<div class="update-user">
+  <div class="form-errors">
+    <% if !@user.errors.empty? %>
+    <h2>The following errors prevented your form submission:</h2>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+    <% end %>
+    <% end %>
+  </div>
+  <%= form_for(@user) do |f| %>
+  <p>Email: <%= f.text_field :email, value: "#{@user.email}" %></p>
+  <p>Password: <%= f.password_field :password %></p>
+  <p><%= f.submit "Update!" %></p>
+  <% end %>
+</div>

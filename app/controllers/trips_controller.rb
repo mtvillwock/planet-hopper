@@ -1,8 +1,9 @@
 class TripsController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
 
   def index
-    @trips = current_user.trips.all
+    user = current_user
+    @trips = user.trips.all
     @trip = Trip.new
   end
 
@@ -17,8 +18,10 @@ class TripsController < ApplicationController
 
 
   def create
+    user = current_user
     @trip = Trip.new(trip_params)
     if @trip.save
+      user.trips << @trip
       redirect_to @trip
     else
       render 'new'

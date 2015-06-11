@@ -1,2 +1,5 @@
-<h1>Greetings, Username!</h1>
-
+<% if current_user %>
+<h3>Greetings, <%= current_user.email %></h3>
+<p><%= link_to 'See your trips', trips_path %></p>
+<p><%= link_to 'Plan a trip', new_trip_path %></p>
+<% end %>

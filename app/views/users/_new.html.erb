@@ -1,7 +1,7 @@
 <div class="register">
   <div class="form-errors">
-    <h2>The following errors prevented your form submission:</h2>
     <% if !@user.errors.empty? %>
+    <h2>The following errors prevented your form submission:</h2>
     <% @user.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
     <% end %>
