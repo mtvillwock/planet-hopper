@@ -35,6 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'shoulda'
+
 gem 'better_errors'
 gem 'binding_of_caller'
 
@@ -49,7 +51,7 @@ end
 group :development, :test do
   gem "rspec-rails", "~> 3.1.0"
   gem "factory_girl_rails", "~> 4.4.1"
-
+  gem 'shoulda-matchers'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
