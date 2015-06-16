@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+require 'sidekiq/web'
+mount Sidekiq::Web => '/sidekiq'
+# note: this is insecure in production
+
   # AJAX
   match 'trips/get_cities' => 'trips#get_cities', :via => :get
   match 'trips/departure_airports' => 'trips#departure_airports', :via => :get

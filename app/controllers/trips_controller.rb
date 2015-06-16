@@ -22,6 +22,8 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       user.trips << @trip
+      trip_attributes = JSON.generate(@trip.attributes)
+      TripInfoWorker.new.perform(trip_attributes)
       redirect_to @trip
     else
       render 'new'

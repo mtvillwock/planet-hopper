@@ -50,3 +50,6 @@ bower.json
 
 # Ignore environment variables
 .env
+
+# Ignore redis db files
+dump.rdb
