@@ -9,7 +9,6 @@
   <p>Returning: <%= @trip.end_date %></p>
   <p>From: <%= @trip.origin_city %>, <%= @trip.origin_country %></p>
   <p>To: <%= @trip.destination_city %>, <%= @trip.destination_country %></p>
-
   <%= render partial: 'trip_links', locals: { trip: @trip } %>
 </div>
 

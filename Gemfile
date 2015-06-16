@@ -38,6 +38,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'puma'
 # gem 'thin'
 
+gem 'awesome_print'
+
 gem 'sidekiq'
 gem 'sidekiq-failures'
 # refer to this https://github.com/mhfs/sidekiq-failures
