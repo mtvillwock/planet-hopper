@@ -22,6 +22,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       user.trips << @trip
+      TripInfoWorker.new.perform(@trip.id)
       redirect_to @trip
     else
       render 'new'

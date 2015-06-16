@@ -1,7 +1,7 @@
+<p><%= link_to 'Your trips', trips_path %></p>
 <%= link_to new_trip_path do %>
-    <p><%= link_to 'Your trips', trips_path %></p>
-    <button>Make a new trip</button>
-  <% end %>
+  <button>Make a new trip</button>
+<% end %>
 <div class="col-xs-5">
   <h2><%= @trip.origin_city %>, <%= @trip.origin_country %> to <%= @trip.destination_city %>, <%= @trip.destination_country %></h2>
   <p>For <%= @trip.duration %> <%= @trip.timespan %></p>
@@ -9,7 +9,6 @@
   <p>Returning: <%= @trip.end_date %></p>
   <p>From: <%= @trip.origin_city %>, <%= @trip.origin_country %></p>
   <p>To: <%= @trip.destination_city %>, <%= @trip.destination_country %></p>
-
   <%= render partial: 'trip_links', locals: { trip: @trip } %>
 </div>
 

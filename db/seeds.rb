@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'json'
+
+file = File.read('airports.json')
+airport_data = JSON.parse(file)
+
+airport_data.each do |airport|
+  p Airport.new(name: airport["name"], airport_code: airport["iata"] )
+  # Need way to get the city id before saving these
+end

@@ -11,19 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609051626) do
+ActiveRecord::Schema.define(version: 20150611204131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "airlines", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "airports", force: :cascade do |t|
+    t.integer "city_id"
+    t.string  "name"
+    t.string  "airport_code"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string  "name"
+    t.integer "country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.text   "visa_requirements"
+  end
+
   create_table "flights", force: :cascade do |t|
     t.integer  "trip_id"
-    t.string   "airline"
-    t.string   "airport"
     t.datetime "departure_date"
     t.datetime "return_date"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "airline_id"
   end
 
   create_table "passports", force: :cascade do |t|
@@ -33,6 +52,12 @@ ActiveRecord::Schema.define(version: 20150609051626) do
     t.integer  "country_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.integer "airline_id"
+    t.integer "origin_airport_id"
+    t.integer "destination_airport_id"
   end
 
   create_table "trips", force: :cascade do |t|
