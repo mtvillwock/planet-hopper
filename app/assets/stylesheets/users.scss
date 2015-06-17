@@ -2,14 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container {
+.container-fluid {
   background-color: #dfdfdf;
 }
 
-.container:after {
+.container-fluid:after {
   visibility: hidden;
   display: block;
   content: "";
   clear: both;
   height: 0;
 }
+
