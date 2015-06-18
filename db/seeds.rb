@@ -11,6 +11,7 @@ file = File.read('airports.json')
 airport_data = JSON.parse(file)
 
 airport_data.each do |airport|
-  p Airport.new(name: airport["name"], airport_code: airport["iata"] )
+  Airport.new(name: airport["name"], airport_code: airport["iata"])
+  .save
   # Need way to get the city id before saving these
 end
