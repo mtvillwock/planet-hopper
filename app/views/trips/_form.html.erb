@@ -21,10 +21,10 @@
     <%= f.text_field :destination_country, placeholder: "destination country", list: "destination_countries" %>
  </p>
  <!-- drop down starting with months, can choose days or years -->
- <p class="trip-duration" style="display: none">
+ <p class="trip-duration" style="display: none;">
    <%= f.text_field :duration, placeholder: 'for X' %>
    <%= f.text_field :timespan, placeholder: 'days/months/years', list: "timespans" %>
-   <span class="dates" style="display: none">
+   <span class="trip-duration" style="display: none;">
    <%= f.label "from"  %>
    <%= date_select :trip, :start_date %>
    <%= f.label "until"  %>
@@ -33,12 +33,12 @@
  </p>
  <!-- this is going to be a drop down, see select/options in form for guide -->
 
- <p class="trip-airport" style="display: none">
+ <p class="trip-airport" style="display: none;">
   <%= f.label "Departing from" %>
   <%= f.text_field :origin_city, list: "airport-cities", placeholder: "Airport" %>
 </p>
 
-<p class="trip-passport" style="display: none">
+<p class="trip-passport" style="display: none;">
   <%= f.label 'With a passport from' %>
   <%= f.text_field :origin_country, placeholder: "origin country", placeholder: "origin country", list: "origin_countries" %>
 </p>
@@ -53,7 +53,7 @@
      f.label visa <br>
      f.text_field visa
    </p> -->
-   <p class="trip-submit" style="display: none">
+   <p class="trip-submit" style="display: none;">
    <%= f.submit %>
    </p>
  <% end %>
