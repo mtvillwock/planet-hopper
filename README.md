@@ -6,6 +6,7 @@ In progress.
 
 - ~~form revealing fields as it goes~~
 - ~~basic user auth~~
+- display possible flights for trip (feature in progress)
 - show travel suggestions after form is filled out
 
 
