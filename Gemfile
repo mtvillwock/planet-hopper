@@ -38,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'puma'
 # gem 'thin'
 
+# for making multiple flight requests
+gem 'typhoeus'
+
 gem 'awesome_print'
 
 gem 'sidekiq'
