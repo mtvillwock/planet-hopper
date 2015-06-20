@@ -39,8 +39,10 @@ class FlightSearchWorker
     @request_array << request_hydra
     @hydra.queue(request_hydra)
     @hydra.run # making a 'parallel' api call after queueing all api calls
+    final_response = ""
     @request_array.each do |request|
-      ap final_response = JSON.parse(request.response.body)
+      final_response = JSON.parse(request.response.body)
     end
+    ap final_response
   end
 end
