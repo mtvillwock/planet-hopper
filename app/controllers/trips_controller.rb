@@ -24,8 +24,8 @@ class TripsController < ApplicationController
     if @trip.save
       user.trips << @trip
       p @trip.attributes
+      flight_info = FlightSearchWorker.new.perform(trip_params)
       TripInfoWorker.new.perform(@trip.id)
-      FlightSearchWorker.new.perform(trip_params)
       redirect_to @trip
     else
       render 'new'
