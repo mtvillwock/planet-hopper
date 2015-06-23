@@ -2,6 +2,18 @@ require 'typhoeus'
 
 class FlightSearchWorker
 
+  def parse(response)
+    trip_data = response["trips"]["data"]
+    airports = trip_data["airport"] # array of hashes with code, city, name
+    cities = trip_data["city"] # array of hashes with code and name
+    carrier = trip_data["carrier"] # array of hashes with code and name
+    trip_options = response["trips"]["tripOption"][0] # hash with saleTotal and slice
+    cost = trip_options["saleTotal"] #(USD + floating digits)
+    flight_slice = trip_options["slice"][0] # hashes including segment and leg
+    flight_leg = flight_slice["segment"][0]["leg"] # hash with origin and destination codes and terminals, as well as arrival and departure timestamps
+    ap "The airports are #{airports}, cities are #{cities}, carrier is #{carrier}, cost is #{cost}, flight_slice is #{flight_slice}, flight_leg is #{flight_leg}"
+  end
+
   def perform(args)
     p args
     # dates come in as these weird params
@@ -44,5 +56,6 @@ class FlightSearchWorker
       final_response = JSON.parse(request.response.body)
     end
     ap final_response
+    parse(final_response)
   end
 end
