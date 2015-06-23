@@ -3,19 +3,36 @@ require 'typhoeus'
 class FlightSearchWorker
 
   def parse_airports(data)
-    ap airports_hashes = data.map { |el| { ["code"] => el["city"] } }
+    airports_hashes = []
+    data.each do |el|
+      airports_hashes << { code: el["code"],
+                           city: el["city"],
+                           name: el["name"] }
+    end
   end
 
   def parse_flight(data)
-    ap leg = data
+    flight_hash = {
+      origin: data["origin"],
+      destination: data["destination"],
+      arrival_time: data["arrivalTime"],
+      departure_time: data["departureTime"]
+    }
   end
 
   def parse_cities(data)
-    ap cities = data
+    city_hashes = []
+    data.each do |el|
+      city_hashes << { code: el["code"],
+                       city: el["name"] }
+    end
   end
 
   def parse_carrier(data)
-    ap carriers = data
+    carriers_hash = {}
+    data.each do |el|
+      carriers_hash = { code: el["code"], name: el["name"] }
+    end
   end
 
   def parse(response)
@@ -24,13 +41,19 @@ class FlightSearchWorker
     cities = trip_data["city"] # array of hashes with code and name
     carriers = trip_data["carrier"] # array of hashes with code and name
     trip_options = response["trips"]["tripOption"].first # hash with saleTotal and slice
-    ap cost = trip_options["saleTotal"] #(USD + floating digits)
+    cost = trip_options["saleTotal"] #(USD + floating digits)
     flight_slice = trip_options["slice"].first # hashes including segment and leg
     flight_leg = flight_slice["segment"].first["leg"].first # hash with origin and destination codes and terminals, as well as arrival and departure timestamps
-    parse_airports(airports)
-    parse_cities(cities)
-    parse_carrier(carriers)
-    parse_flight(flight_leg)
+    airports = parse_airports(airports)
+    cities = parse_cities(cities)
+    carriers = parse_carrier(carriers)
+    flight = parse_flight(flight_leg)
+    data = {
+      airports: airports,
+      cities: cities,
+      carriers: carriers,
+      flight: flight
+    }
   end
 
   def perform(args)
