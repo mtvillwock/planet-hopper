@@ -2,16 +2,35 @@ require 'typhoeus'
 
 class FlightSearchWorker
 
+  def parse_airports(data)
+    ap airports_hashes = data.map { |el| { ["code"] => el["city"] } }
+  end
+
+  def parse_flight(data)
+    ap leg = data
+  end
+
+  def parse_cities(data)
+    ap cities = data
+  end
+
+  def parse_carrier(data)
+    ap carriers = data
+  end
+
   def parse(response)
     trip_data = response["trips"]["data"]
     airports = trip_data["airport"] # array of hashes with code, city, name
     cities = trip_data["city"] # array of hashes with code and name
-    carrier = trip_data["carrier"] # array of hashes with code and name
-    trip_options = response["trips"]["tripOption"][0] # hash with saleTotal and slice
-    cost = trip_options["saleTotal"] #(USD + floating digits)
-    flight_slice = trip_options["slice"][0] # hashes including segment and leg
-    flight_leg = flight_slice["segment"][0]["leg"] # hash with origin and destination codes and terminals, as well as arrival and departure timestamps
-    ap "The airports are #{airports}, cities are #{cities}, carrier is #{carrier}, cost is #{cost}, flight_slice is #{flight_slice}, flight_leg is #{flight_leg}"
+    carriers = trip_data["carrier"] # array of hashes with code and name
+    trip_options = response["trips"]["tripOption"].first # hash with saleTotal and slice
+    ap cost = trip_options["saleTotal"] #(USD + floating digits)
+    flight_slice = trip_options["slice"].first # hashes including segment and leg
+    flight_leg = flight_slice["segment"].first["leg"].first # hash with origin and destination codes and terminals, as well as arrival and departure timestamps
+    parse_airports(airports)
+    parse_cities(cities)
+    parse_carrier(carriers)
+    parse_flight(flight_leg)
   end
 
   def perform(args)
@@ -55,7 +74,7 @@ class FlightSearchWorker
     @request_array.each do |request|
       final_response = JSON.parse(request.response.body)
     end
-    ap final_response
+    final_response
     parse(final_response)
   end
 end
