@@ -29,6 +29,8 @@ class TripsController < ApplicationController
       p cities_info = trip_info[:cities]
       p carrier_info = trip_info[:carriers].first
       p airline = Airline.find_or_create_by(name: carrier_info["name"])
+      # airport = Airport.find_or_create_by
+      # route = Route.find_by(airline_id: )
       cities_info.length.times do |i|
         flight = Flight.new(
           airline_id: airline.id,
