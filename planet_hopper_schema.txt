@@ -226,7 +226,7 @@
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <row name="return_time" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
+<datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <row name="airline_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>

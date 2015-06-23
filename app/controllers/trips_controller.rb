@@ -75,7 +75,8 @@ class TripsController < ApplicationController
     # fetch all airports, compare possible matches to input from AJAX call
     # City model/migration could be useful, spoofing it with a sample array
     airport_options = []
-    possible_airports = ["SFO", "JFK", "SEA-TAC", "DFW", "SBA", "SBP", "SBN"]
+    # possible_airports = ["SFO", "JFK", "SEA-TAC", "DFW", "SBA", "SBP", "SBN"]
+    possible_airports = Airport.map { |airport| airport.code }
     # maybe a hash with city name as a string and city object as a value
     p "form input is: "
     p params[:airport_input]
@@ -97,9 +98,9 @@ class TripsController < ApplicationController
     # fetch all airports, compare possible matches to input from AJAX call
     # City model/migration could be useful, spoofing it with a sample array
     airport_options = []
-    possible_airports = ["SFO", "JFK", "SEA-TAC", "DFW", "SBA", "SBP", "SBN", "LAX", "BOS", "GRB"]
+    # possible_airports = ["SFO", "JFK", "SEA-TAC", "DFW", "SBA", "SBP", "SBN", "LAX", "BOS", "GRB"]
     # maybe a hash with city name as a string and city object as a value
-    # possible_airports = Airport.all.map { |airport| airport.airport_code }
+    possible_airports = Airport.all.map { |airport| airport.airport_code }
     # p possible_airports
     # possible_airports = Airport.where(airport_code: params[:city_input])
     p "form input is: "
