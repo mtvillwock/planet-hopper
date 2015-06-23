@@ -19,14 +19,29 @@ class TripsController < ApplicationController
 
   def create
     user = current_user
-    p trip_params
     @trip = Trip.new(trip_params)
     if @trip.save
       user.trips << @trip
       p @trip.attributes
+      trip_info = FlightSearchWorker.new.perform(trip_params)
+      p flight_info = trip_info[:flight]
+      p airport_info = trip_info[:airports]
+      p cities_info = trip_info[:cities]
+      p carrier_info = trip_info[:carriers].first
+      p airline = Airline.find_or_create_by(name: carrier_info["name"])
+      cities_info.length.times do |i|
+        flight = Flight.new(
+          airline_id: airline.id,
+          airport: airport_info[i]["code"], # should this be the name or both?
+          departure_time: flight_info[:departure_time],
+          arrival_time: flight_info[:arrival_time]
+        )
+        flight.save
+        @trip.flights << flight
+      end
+      p @trip.flights
       TripInfoWorker.new.perform(@trip.id)
-      FlightSearchWorker.new.perform(trip_params)
-      redirect_to @trip
+      redirect_to trip_path(@trip)
     else
       render 'new'
     end
@@ -122,7 +137,7 @@ class TripsController < ApplicationController
   def timespans
     timespan_options = []
     possible_timespans = ["days", "weeks", "months", "years"]
-      timespan_options = possible_timespans
+    timespan_options = possible_timespans
     p timespan_options
     render json: { timespan_options: timespan_options }
   end

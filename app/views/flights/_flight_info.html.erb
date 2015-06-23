@@ -1,0 +1,4 @@
+<div class="flight-info col-xs-4 pull-right">
+  <p>Departing <%= @trip.origin_city %>, <%= @trip.origin_country %> at <%= @trip.flights.first.departure_time %></p>
+  <p>Arriving <%= @trip.destination_city %>, <%= @trip.destination_country %> at <%= @trip.flights.first.arrival_time %></p>
+</div>
