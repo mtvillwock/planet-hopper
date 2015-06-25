@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authorize, except: [:index, :new, :create]
   def index
     @user = User.new
+    MyJob.perform_later(something)
+    MyJob.set(wait_until: Date.tomorrow.noon).perform_later(something)
   end
 
   def show
