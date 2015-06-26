@@ -1,6 +1,7 @@
 require 'typhoeus'
 
 class FlightSearchWorker
+  include Sidekiq::Worker
 
   def parse_airports(data)
     airports_hashes = []
