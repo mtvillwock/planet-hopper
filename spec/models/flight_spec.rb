@@ -8,5 +8,8 @@ RSpec.describe Flight, :type => :model do
     it { should have_one(:origin).class_name('Airport').through(:route) }
   end
   context 'validations' do
+    it { should validate_presence_of(:trip_id) }
+    it { should validate_presence_of(:arrival_time) }
+    it { should validate_presence_of(:departure_time) }
   end
 end
