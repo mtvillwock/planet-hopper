@@ -6,6 +6,6 @@ class Flight < ActiveRecord::Base
   has_one :origin, class_name: 'Airport', through: :route
 
   validates_presence_of :trip_id
-  # validates_presence_of :arrival_time
-  # validates_presence_of :departure_time
+  validates_presence_of :arrival_time
+  validates_presence_of :departure_time
 end
