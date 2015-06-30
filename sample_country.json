@@ -1,0 +1,95 @@
+[{
+        "id": 1,
+        "countryName": "Afghanistan",
+        "states": [{
+            "id": 1,
+            "stateName": "Badakhshan",
+            "cities": [{
+                "id": 1,
+                "cityName": "Arghanj Khwāh"
+            }, {
+                "id": 2,
+                "cityName": "Argō"
+            }, {
+                "id": 3,
+                "cityName": "Bahārak"
+            }, {
+                "id": 4,
+                "cityName": "Darwāz-e Bālā"
+            }, {
+                "id": 5,
+                "cityName": "Darwāz-e Pā’īn"
+            }, {
+                "id": 6,
+                "cityName": "Darāyim"
+            }, {
+                "id": 7,
+                "cityName": "Faīẕābād"
+            }, {
+                "id": 8,
+                "cityName": "Ishkāshim"
+            }, {
+                "id": 9,
+                "cityName": "Jurm"
+            }, {
+                "id": 10,
+                "cityName": "Khwāhān"
+            }, {
+                "id": 11,
+                "cityName": "Khāsh"
+            }, {
+                "id": 12,
+                "cityName": "Kirān wa Munjān"
+            }, {
+                "id": 13,
+                "cityName": "Kishim"
+            }, {
+                "id": 14,
+                "cityName": "Kuran Wa Munjan"
+            }, {
+                "id": 15,
+                "cityName": "Kōhistān"
+            }, {
+                "id": 16,
+                "cityName": "Kūf Āb"
+            }, {
+                "id": 17,
+                "cityName": "Rāghistān"
+            }, {
+                "id": 18,
+                "cityName": "Shahr-e Buzurg"
+            }, {
+                "id": 19,
+                "cityName": "Shighnan District"
+            }, {
+                "id": 20,
+                "cityName": "Shikī"
+            }, {
+                "id": 21,
+                "cityName": "Shuhadā"
+            }, {
+                "id": 22,
+                "cityName": "Tagāb"
+            }, {
+                "id": 23,
+                "cityName": "Tashkān"
+            }, {
+                "id": 24,
+                "cityName": "Wurduj"
+            }, {
+                "id": 25,
+                "cityName": "Wākhān"
+            }, {
+                "id": 26,
+                "cityName": "Yaftal-e Suflá"
+            }, {
+                "id": 27,
+                "cityName": "Yamgān"
+            }, {
+                "id": 28,
+                "cityName": "Yāwān"
+            }, {
+                "id": 29,
+                "cityName": "Zebak"
+            }]
+        }]

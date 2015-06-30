@@ -9,35 +9,19 @@ require 'httparty'
 require 'json'
 require 'awesome_print'
 
-
-def build_airports
-  # file = File.read('airports.json')
-  # airport_data = JSON.parse(file)
-
-  # airport_data.each do |airport|
-  #   Airport.new(name: airport["name"], airport_code: airport["iata"])
-  #   .save
-  #   # Need way to get the city id before saving these
-  # end
-end
-
 def build_countries_and_cities
   file = File.read('countries-hierarchy.json')
   countries = JSON.parse(file)
   countries = countries
   countries.each do |country|
-    ap country["countryName"]
+    country["countryName"]
     cnty = Country.find_or_create_by(name: country["countryName"])
-    ap country["cities"]
 
     if country["cities"].nil? || country["cities"].empty?
       next
     else
-      ap country["cities"]
       country["cities"].each do |city|
-        ap city
-        ap City.find_or_create_by(name: city["cityName"], country_id: cnty.id)
-        sleep(2.0)
+        City.find_or_create_by(name: city["cityName"], country_id: cnty.id)
       end
     end
   end
@@ -51,14 +35,28 @@ def update_countries
   }
   countries = JSON.parse(response.body)
   countries.each do |country|
-    c = Country.find_by(name: country["name"])
-    c.update(
-      region: country["region"],
-      subregion: country["subregion"]
-    )
+    c = Country.find_or_create_by(name: country["name"])
+    if c.nil?
+      next
+    else
+      ap c.update(
+        region: country["region"],
+        subregion: country["subregion"]
+      )
+    end
   end
 end
 
-build_airports
+def build_airports
+  # file = File.read('airports.json')
+  # airport_data = JSON.parse(file)
+
+  # airport_data.each do |airport|
+  #   Airport.find_or_create_by(name: airport["name"], airport_code: airport["iata"])
+  #   # Need way to get the city id before saving these
+  # end
+end
+
 build_countries_and_cities
-# update_countries
+update_countries
+build_airports
