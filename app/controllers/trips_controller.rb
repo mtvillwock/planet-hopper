@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  include FlightsHelper
   before_action :authorize
 
   def index
@@ -20,17 +21,20 @@ class TripsController < ApplicationController
   def create
     user = current_user
     @trip = Trip.new(trip_params)
-    if @trip.save
+    if @trip.save!
       user.trips << @trip
-      p @trip.attributes
-      trip_info = FlightSearchWorker.new.perform(trip_params)
-      p flight_info = trip_info[:flight]
-      p airport_info = trip_info[:airports]
-      p cities_info = trip_info[:cities]
-      p carrier_info = trip_info[:carriers].first
-      p airline = Airline.find_or_create_by(name: carrier_info["name"])
-      # airport = Airport.find_or_create_by
-      # route = Route.find_by(airline_id: )
+      response = search_for_flight(trip_params)
+      flight_info = trip_info[:flight]
+      airport_info = trip_info[:airports]
+      cities_info = trip_info[:cities]
+      carrier_info = trip_info[:carriers].first
+
+      airline = Airline.find_or_create_by(name: carrier_info["name"])
+      airport_info.length.times do |i|
+        p Airport.find_or_create_by(airport_code: airport_info[i]["code"])
+      end
+      route = Route.find_by(airline_id: airline.id)
+
       cities_info.length.times do |i|
         flight = Flight.new(
           airline_id: airline.id,

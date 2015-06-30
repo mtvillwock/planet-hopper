@@ -4,5 +4,5 @@ class Trip < ActiveRecord::Base
 
 
   validates_presence_of :origin_city, :origin_country, :destination_city, :destination_country, :timespan, :duration
-  # validates_presence_of :start_date, :end_date
+  validates_presence_of :start_date, :end_date
 end

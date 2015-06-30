@@ -37,6 +37,7 @@ class FlightSearchWorker
   end
 
   def parse(response)
+    ap response
     trip_data = response["trips"]["data"]
     airports = trip_data["airport"] # array of hashes with code, city, name
     cities = trip_data["city"] # array of hashes with code and name
@@ -70,7 +71,7 @@ class FlightSearchWorker
     p airport = Airport.where(airport_code: args[:destination_city]).first!
     # make request to get flight and parse response
     # include another slice for roundtrip
-    p  request = {
+    request_body = {
       "request" => {
         "slice" => [
           {
@@ -86,19 +87,30 @@ class FlightSearchWorker
         "refundable" => false
       }
     }.to_json
-    # will need to change number of solutions if using this as background job
-    # that way can make many requests using Hydra without having client wait 10+ seconds
-    @request_array = []
+
     @hydra = Typhoeus::Hydra.new
-    p request_hydra = Typhoeus::Request.new("https://www.googleapis.com/qpxExpress/v1/trips/search?prettyPrint=true&key=#{ENV['GOOGLE_API_KEY']}", method: :post, body: request, headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }, followlocation: true)
-    @request_array << request_hydra
-    @hydra.queue(request_hydra)
-    @hydra.run # making a 'parallel' api call after queueing all api calls
-    final_response = ""
-    @request_array.each do |request|
-      final_response = JSON.parse(request.response.body)
+    url = "https://www.googleapis.com/qpxExpress/v1/trips/search?prettyPrint=true&key=#{ENV['GOOGLE_API_KEY']}"
+    p request = Typhoeus::Request.new(url,
+                                      method: :post,
+                                      body: request_body,
+                                      headers: { 'Content-Type' => 'application/json',
+                                                 'Accept' => 'application/json' },
+                                      followlocation: true)
+    request.on_complete do |response|
+      if response.success?
+        p response
+      elsif response.timed_out?
+    log("got a time out")
+      elsif response.code == 0
+        # Could not get an http response, something's wrong.
+    log(response.return_message)
+      else
+        # Received a non-successful http response.
+        log("HTTP request failed: " + response.code.to_s)
+      end
     end
-    final_response
-    parse(final_response)
+    # ap final_response = request.response
+    # p '*' * 100
+    # ap parse(final_response)
   end
 end
