@@ -38,6 +38,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'puma'
 # gem 'thin'
 
+gem 'httparty'
+
 # for making multiple flight requests
 gem 'typhoeus'
 

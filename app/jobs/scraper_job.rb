@@ -15,8 +15,9 @@ require 'open-uri'
 # add_comment => takes a Comment object as input and adds it to comments list
 
 class ScraperJob < ActiveJob::Base
-  queue_as :default
   include Sidekiq::Worker
+
+  queue_as :default
 
   def greeting(string)
     p "do the #{string}" * 100
@@ -27,8 +28,8 @@ class ScraperJob < ActiveJob::Base
   end
 end
 
-class Job # or Lodging
-  attr_reader # attributes of job
+class Lodging
+  attr_reader # attributes of lodging
 
   def initialize
     @page = Nokogiri::HTML(open(ARGV[0]))
@@ -80,20 +81,20 @@ class Comment
 
 end
 
-myPost = Post.new
-puts "should be empty array of objects"
-p myPost.array_of_comment_objects
-p myPost.format_info
-puts "should show info hashes"
-p myPost.array_of_info_hashes
-myPost.populate_post
-puts "should be a full array of objects"
-puts myPost.array_of_comment_objects
-puts "add comment with add_comment"
-p myPost.add_comment({user_name: "matt", url: "http:google.com", comment_text: "this is comment text"})
-puts "show contents of array of comments objects"
-p myPost.comments
+# myPost = Post.new
+# puts "should be empty array of objects"
+# p myPost.array_of_comment_objects
+# p myPost.format_info
+# puts "should show info hashes"
+# p myPost.array_of_info_hashes
+# myPost.populate_post
+# puts "should be a full array of objects"
+# puts myPost.array_of_comment_objects
+# puts "add comment with add_comment"
+# p myPost.add_comment({user_name: "matt", url: "http:google.com", comment_text: "this is comment text"})
+# puts "show contents of array of comments objects"
+# p myPost.comments
 
-# comment = Comment.new('id=5003980.html')
-# p comment.user_name
-# p comment.comment_text
+# # comment = Comment.new('id=5003980.html')
+# # p comment.user_name
+# # p comment.comment_text
